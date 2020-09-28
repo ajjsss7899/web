@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+		<title>리사이즈 끝난 후 이벤트 실행</title>
+	</head>
+	
+	<style>
+		body {padding: 10px;}
+	</style>
+
+	<body>
+		<div class="test">
+			window size : <span></span>px
+		</div>
+
+		<script>
+			//리사이즈 실행 딜레이
+			$(window).resize(function() {
+				if(this.resizeTO) {
+					clearTimeout(this.resizeTO);
+				}
+				this.resizeTO = setTimeout(function() {
+					$(this).trigger('resizeEnd');
+				}, 100);
+			});
+			
+			//리사이즈 끝난 후 이벤트 실행
+			$(window).on('resizeEnd', function() {
+				var wd = $(window).width();
+				$('.test span').html(wd)
+			});
+		</script>
+	</body>
+</html>

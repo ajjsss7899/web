@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+		<title>퀵메뉴</title>
+	</head>
+	
+	<style>
+		/* Reset */
+		*{box-sizing: border-box;}
+		body {margin: 0;padding: 0;min-height: 2000px;}
+		ul {margin: 0;padding: 0;list-style: none;}
+		
+		/* 퀵메뉴 */
+		.quick {position: absolute;top: 100px;right: 30px;}
+		.quick > li {background: #ddd;width: 100px;}
+		.quick > li + li {border-top: 1px solid #fff;}
+		.quick > li a {padding: 10px;display: block;text-align: center;padding: 0 10x;text-decoration: none;font-size: 14px;color: #000;}
+	</style>
+
+	<body>
+		<ul class="quick">
+			<li><a href="#">메뉴 1</a></li>
+			<li><a href="#">메뉴 2</a></li>
+			<li><a href="#">메뉴 3</a></li>
+			<li><a href="#">메뉴 4</a></li>
+		</ul>
+
+		<script>
+			$(function(){
+				var position = parseInt($(".quick").css('top'));
+				$(window).scroll(function() {
+					var scrollTop = $(window).scrollTop();
+					if (scrollTop > position){
+					  var newPosition = scrollTop + 100 + "px";
+					}else{
+					  var newPosition = position + "px";
+					}
+					$(".quick").stop().animate({
+						"top" : newPosition
+					}, 350);
+				}).scroll();
+			})
+		</script>
+	</body>
+</html>

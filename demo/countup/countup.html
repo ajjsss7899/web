@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+
+		
+		<title>CountUp</title>
+		<style>
+			body {padding: 30px;}
+		</style>
+	</head>
+	<body>
+		<script>
+			$(document).ready(function() {
+				$('.counter').counterUp({
+					delay: 10,
+					time: 1000
+				});
+			});
+		</script>
+
+		<span class="counter">52,147</span><br><br>
+		<span class="counter">1.9583</span><br><br>
+		<span class="counter">12345</span>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+		<script src="../countup/js/jquery.counterup.min.js"></script>
+	</body>
+</html>

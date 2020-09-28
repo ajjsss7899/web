@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+		<title>사이드 네비게이션</title>
+	</head>
+	
+	<style>
+		body {margin: 0;padding: 0;}
+		#con1 {height: 700px;background: #36c3fe;}
+		#con2 {height: 700px;background: #6592fe;}
+		#con3 {height: 700px;background: #6059f7;}
+
+		.side_nav {position: fixed;top: 0;right: 0;list-style: none;margin: 0;padding: 0;z-index: 100;}
+		.side_nav > li {}
+		.side_nav > li a{display: inline-block;width:10px;height: 10px;border-radius: 5px;background: #000;font-size: 14px;color: #000;text-decoration: none;}
+		.side_nav > li.active a {background: #fff;}
+	</style>
+
+	<body>
+		<div class="content">
+			<div id="con1" class="target"></div>
+			<div id="con2" class="target"></div>
+			<div id="con3" class="target"></div>
+		</div>
+
+		<ul class="side_nav">
+			<li><a href="#con1"></a></li>
+			<li><a href="#con2"></a></li>
+			<li><a href="#con3"></a></li>
+		</ul>
+
+		<script>
+			$(document).ready(function(){
+				//사이드 네비게이션
+				$('.side_nav a').on('click', function(e) {
+					e.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+
+				});
+
+				$(window).on('scroll', function() {
+					$('.target').each(function() {
+						var wh = $(window).height();
+						var st = $(window).scrollTop()
+						if((st +  (wh / 2)) >= $(this).offset().top) {
+							var id = $(this).attr('id');
+							$('.side_nav a').removeClass('active');
+							$('.side_nav a[href="#'+ id +'"]').addClass('active');
+						}
+					});
+				}).scroll();
+			
+				console.log($('.side_nav a[href="#con1"]'))
+			})
+		</script>
+	</body>
+</html>
